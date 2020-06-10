@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.reseller.controller.dao.L2UserMapper">
+  <resultMap id="BaseResultMap" type="com.web.reseller.model.L2User">
+    <id column="loginName" jdbcType="VARCHAR" property="loginname" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+
+  <select id="login" parameterType="String" resultType="com.web.reseller.model.L2User">
+        select * from l2_user
+        where loginName = #{loginName}
+    </select>
+</mapper>

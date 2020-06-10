@@ -1,4 +1,4 @@
-package controller;
+package com.web.reseller.controller;
 
 import org.springframework.stereotype.Controller;
 
