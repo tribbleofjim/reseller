@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-
     @Autowired
     private L2UserMapper l2UserMapper;
 

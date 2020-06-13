@@ -1,6 +1,0 @@
-com\web\reseller\ResellerApplication.class
-com\web\reseller\dao\L2UserMapper.class
-com\web\reseller\service\UserService.class
-com\web\reseller\model\L2User.class
-com\web\reseller\controller\UserController.class
-com\web\reseller\util\message.class

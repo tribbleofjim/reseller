@@ -6,6 +6,4 @@ import org.springframework.stereotype.Component;
 @Component
 public interface L2UserMapper {
     L2User login(String loginName);
-
-    void register(L2User l2User);
 }
