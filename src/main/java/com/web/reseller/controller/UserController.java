@@ -6,6 +6,7 @@ import com.web.reseller.util.message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -25,12 +26,12 @@ public class UserController {
         return userService.login(l2User);
     }
 
-    @RequestMapping("/webRegister")
+    @RequestMapping(value = "/webRegister", method = RequestMethod.POST)
     @ResponseBody
     public message register(@RequestParam(value = "loginName") String loginName,
                             @RequestParam(value = "password") String password,@RequestParam(value = "confirmPassword")String confirmPassword,@RequestParam(value = "age") int age,
-                            @RequestParam(value = "city") String city,@RequestParam(value = "phonenumber") String phonenumber,
-                            @RequestParam(value = "qqnumber") String qqnumber,@RequestParam(value = "role")String role){
+                            @RequestParam(value = "city") String city,@RequestParam(value = "phoneNumber") String phonenumber,
+                            @RequestParam(value = "qqNumber") String qqnumber,@RequestParam(value = "role")String role){
         String confirm =confirmPassword;
         if(confirm==password)
             return message.Confirm_Password;
