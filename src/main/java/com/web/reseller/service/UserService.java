@@ -17,11 +17,26 @@ public class UserService {
      * @return
      */
     public message login(L2User l2User){
-        if(l2User == null) return message.NO_USER;
-        L2User user = l2UserMapper.login(l2User.getLoginname());
+        if(l2User.getPhonenumber() == null) return message.No_Phonenumber;
+
+        if(l2User.getPassword()==null) return message.No_Password;
+
+        L2User user = l2UserMapper.login(l2User.getPhonenumber());
+
         if(user == null) return message.NO_USER;
         if(!user.getPassword().equals(l2User.getPassword())) return message.PASSWORD_ERROR;
-        return message.SUCCESS;
+
+        if (user.getRole().equals("游客"))
+            return message.SUCCESS_5;
+        if (user.getRole().equals("二级业务员"))
+            return message.SUCCESS_4;
+        if (user.getRole().equals("分销商"))
+            return message.SUCCESS_3;
+        if (user.getRole().equals("一级业务员"))
+            return message.SUCCESS_2;
+        if (user.getRole().equals("公司"))
+            return message.SUCCESS_1;
+        return message.No_ROLE;
     }
 
     /**

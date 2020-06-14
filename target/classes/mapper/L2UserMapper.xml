@@ -8,6 +8,13 @@
 
   <select id="login" parameterType="String" resultType="com.web.reseller.model.L2User">
         select * from l2_user
-        where loginName = #{loginName}
+        where phonenumber = #{phonenumber}
     </select>
+
+    <insert id="register" parameterType="com.web.reseller.model.L2User" >
+    insert into l2_user(loginname,password,phonenumber,qqnumber,age,city,role)
+    values (#{loginname},#{password},#{phonenumber},#{qqnumber},#{age},#{city},#{role})
+
+    </insert>
 </mapper>
+
