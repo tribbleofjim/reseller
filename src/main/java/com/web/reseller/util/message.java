@@ -17,6 +17,9 @@ public class message {
     private static int NOT_FOUND_CODE = 404;
     private static int Info_ERROR_CODE=600;
     // 一些内置的返回message
+    //营销模块
+    public static message No_phone_productID=new message("no phonenumber!",Info_ERROR_CODE);
+
     //注册模块
     public static message Wrong_age = new message("wrong age！",Info_ERROR_CODE);
     public static message Wrong_PhoneN = new message("wrong phone number！",Info_ERROR_CODE);

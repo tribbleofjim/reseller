@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-    <classPathEntry  location="D:\maven_repo\mysql\mysql-connector-java\5.1.35\mysql-connector-java-5.1.35.jar"/>
+    <classPathEntry  location="/Users/gai/Downloads/jar/mysql-connector-java-8.0.16.jar"/>
     <context id="DB2Tables"  targetRuntime="MyBatis3">
         <commentGenerator>
             <property name="suppressDate" value="true"/>
@@ -31,6 +31,6 @@
         </javaClientGenerator>
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
         <!--这里生成所有的表-->
-        <table tableName="%" />
+        <table tableName="l2_order" />
     </context>
 </generatorConfiguration>

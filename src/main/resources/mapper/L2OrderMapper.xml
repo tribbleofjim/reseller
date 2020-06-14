@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.web.reseller.dao.L2OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.web.reseller.model.L2Order" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="customer" property="customer" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="role1" property="role1" jdbcType="VARCHAR" />
+    <result column="role2" property="role2" jdbcType="VARCHAR" />
+    <result column="role3" property="role3" jdbcType="VARCHAR" />
+    <result column="role4" property="role4" jdbcType="VARCHAR" />
+    <result column="role5" property="role5" jdbcType="VARCHAR" />
+    <result column="product" property="product" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+
+  <insert id="insert" parameterType="com.web.reseller.model.L2Order" >
+    insert into l2_order (id, customer, price, 
+      role1, role2, role3, 
+      role4, role5, product, 
+      status)
+    values (#{id,jdbcType=INTEGER}, #{customer,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
+      #{role1,jdbcType=VARCHAR}, #{role2,jdbcType=VARCHAR}, #{role3,jdbcType=VARCHAR}, 
+      #{role4,jdbcType=VARCHAR}, #{role5,jdbcType=VARCHAR}, #{product,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER})
+  </insert>
+
+
+</mapper>
