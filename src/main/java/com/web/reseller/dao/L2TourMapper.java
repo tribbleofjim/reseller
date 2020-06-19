@@ -10,4 +10,5 @@ import java.util.List;
 @Mapper
 public interface L2TourMapper {
     List<L2Tour> ProductList();
+    L2Tour SelectByID(String ID);
 }

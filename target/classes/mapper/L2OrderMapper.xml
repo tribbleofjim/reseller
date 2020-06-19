@@ -1,29 +1,250 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.web.reseller.dao.L2OrderMapper" >
-  <resultMap id="BaseResultMap" type="com.web.reseller.model.L2Order" >
-    <result column="id" property="id" jdbcType="INTEGER" />
-    <result column="customer" property="customer" jdbcType="VARCHAR" />
-    <result column="price" property="price" jdbcType="DECIMAL" />
-    <result column="role1" property="role1" jdbcType="VARCHAR" />
-    <result column="role2" property="role2" jdbcType="VARCHAR" />
-    <result column="role3" property="role3" jdbcType="VARCHAR" />
-    <result column="role4" property="role4" jdbcType="VARCHAR" />
-    <result column="role5" property="role5" jdbcType="VARCHAR" />
-    <result column="product" property="product" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="INTEGER" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.reseller.dao.L2OrderMapper">
+  <resultMap id="BaseResultMap" type="com.web.reseller.model.L2Order">
+    <result column="orderID" jdbcType="VARCHAR" property="orderid" />
+    <result column="buyerName" jdbcType="VARCHAR" property="buyername" />
+    <result column="buyerPhone" jdbcType="VARCHAR" property="buyerphone" />
+    <result column="tourID" jdbcType="VARCHAR" property="tourid" />
+    <result column="tourPrice" jdbcType="DECIMAL" property="tourprice" />
+    <result column="role1" jdbcType="VARCHAR" property="role1" />
+    <result column="role2" jdbcType="VARCHAR" property="role2" />
+    <result column="role3" jdbcType="VARCHAR" property="role3" />
+    <result column="role4" jdbcType="VARCHAR" property="role4" />
+    <result column="role5" jdbcType="VARCHAR" property="role5" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="finishTime" jdbcType="TIMESTAMP" property="finishtime" />
+    <result column="orderStatus" jdbcType="INTEGER" property="orderstatus" />
   </resultMap>
-
-  <insert id="insert" parameterType="com.web.reseller.model.L2Order" >
-    insert into l2_order (id, customer, price, 
-      role1, role2, role3, 
-      role4, role5, product, 
-      status)
-    values (#{id,jdbcType=INTEGER}, #{customer,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
-      #{role1,jdbcType=VARCHAR}, #{role2,jdbcType=VARCHAR}, #{role3,jdbcType=VARCHAR}, 
-      #{role4,jdbcType=VARCHAR}, #{role5,jdbcType=VARCHAR}, #{product,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER})
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    orderID, buyerName, buyerPhone, tourID, tourPrice, role1, role2, role3, role4, role5, 
+    createTime, finishTime, orderStatus
+  </sql>
+  <insert id="insert" parameterType="com.web.reseller.model.L2Order">
+    insert into l2_order (orderID, buyerName, buyerPhone, 
+      tourID, tourPrice, role1, 
+      role2, role3, role4, 
+      role5, createTime, finishTime, 
+      orderStatus)
+    values (#{orderid,jdbcType=VARCHAR}, #{buyername,jdbcType=VARCHAR}, #{buyerphone,jdbcType=VARCHAR}, 
+      #{tourid,jdbcType=VARCHAR}, #{tourprice,jdbcType=DECIMAL}, #{role1,jdbcType=VARCHAR}, 
+      #{role2,jdbcType=VARCHAR}, #{role3,jdbcType=VARCHAR}, #{role4,jdbcType=VARCHAR}, 
+      #{role5,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{finishtime,jdbcType=TIMESTAMP}, 
+      #{orderstatus,jdbcType=INTEGER})
   </insert>
+  <insert id="insertSelective" parameterType="com.web.reseller.model.L2Order">
+    insert into l2_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        orderID,
+      </if>
+      <if test="buyername != null">
+        buyerName,
+      </if>
+      <if test="buyerphone != null">
+        buyerPhone,
+      </if>
+      <if test="tourid != null">
+        tourID,
+      </if>
+      <if test="tourprice != null">
+        tourPrice,
+      </if>
+      <if test="role1 != null">
+        role1,
+      </if>
+      <if test="role2 != null">
+        role2,
+      </if>
+      <if test="role3 != null">
+        role3,
+      </if>
+      <if test="role4 != null">
+        role4,
+      </if>
+      <if test="role5 != null">
+        role5,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="finishtime != null">
+        finishTime,
+      </if>
+      <if test="orderstatus != null">
+        orderStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="buyername != null">
+        #{buyername,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerphone != null">
+        #{buyerphone,jdbcType=VARCHAR},
+      </if>
+      <if test="tourid != null">
+        #{tourid,jdbcType=VARCHAR},
+      </if>
+      <if test="tourprice != null">
+        #{tourprice,jdbcType=DECIMAL},
+      </if>
+      <if test="role1 != null">
+        #{role1,jdbcType=VARCHAR},
+      </if>
+      <if test="role2 != null">
+        #{role2,jdbcType=VARCHAR},
+      </if>
+      <if test="role3 != null">
+        #{role3,jdbcType=VARCHAR},
+      </if>
+      <if test="role4 != null">
+        #{role4,jdbcType=VARCHAR},
+      </if>
+      <if test="role5 != null">
+        #{role5,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishtime != null">
+        #{finishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderstatus != null">
+        #{orderstatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByExampleSelective" parameterType="map">
+    update l2_order
+    <set>
+      <if test="record.orderid != null">
+        orderID = #{record.orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buyername != null">
+        buyerName = #{record.buyername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buyerphone != null">
+        buyerPhone = #{record.buyerphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tourid != null">
+        tourID = #{record.tourid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tourprice != null">
+        tourPrice = #{record.tourprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.role1 != null">
+        role1 = #{record.role1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.role2 != null">
+        role2 = #{record.role2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.role3 != null">
+        role3 = #{record.role3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.role4 != null">
+        role4 = #{record.role4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.role5 != null">
+        role5 = #{record.role5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null">
+        createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.finishtime != null">
+        finishTime = #{record.finishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderstatus != null">
+        orderStatus = #{record.orderstatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update l2_order
+    set orderID = #{record.orderid,jdbcType=VARCHAR},
+      buyerName = #{record.buyername,jdbcType=VARCHAR},
+      buyerPhone = #{record.buyerphone,jdbcType=VARCHAR},
+      tourID = #{record.tourid,jdbcType=VARCHAR},
+      tourPrice = #{record.tourprice,jdbcType=DECIMAL},
+      role1 = #{record.role1,jdbcType=VARCHAR},
+      role2 = #{record.role2,jdbcType=VARCHAR},
+      role3 = #{record.role3,jdbcType=VARCHAR},
+      role4 = #{record.role4,jdbcType=VARCHAR},
+      role5 = #{record.role5,jdbcType=VARCHAR},
+      createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      finishTime = #{record.finishtime,jdbcType=TIMESTAMP},
+      orderStatus = #{record.orderstatus,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <select id="selectOrderByPhone" parameterType="String" resultType="String">
+        select tourID from l2_order
+        where buyerPhone = #{phonenumber}
+    </select>
 
 
 </mapper>

@@ -1,13 +1,18 @@
 package com.web.reseller.model;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class L2Order {
-    private Integer id;
+    private String orderid;
 
-    private String customer;
+    private String buyername;
 
-    private BigDecimal price;
+    private String buyerphone;
+
+    private String tourid;
+
+    private double tourprice;
 
     private String role1;
 
@@ -19,45 +24,50 @@ public class L2Order {
 
     private String role5;
 
-    private String product;
+    private Date createtime;
 
-    private Integer status;
+    private Date finishtime;
 
-    public L2Order(Integer id, String customer, BigDecimal price, String role1, String role2, String role3, String role4, String role5, String product, Integer status) {
-        this.id = id;
-        this.customer = customer;
-        this.price = price;
-        this.role1 = role1;
-        this.role2 = role2;
-        this.role3 = role3;
-        this.role4 = role4;
-        this.role5 = role5;
-        this.product = product;
-        this.status = status;
+    private Integer orderstatus;
+
+    public String getOrderid() {
+        return orderid;
     }
 
-    public Integer getId() {
-        return id;
+    public void setOrderid(String orderid) {
+        this.orderid = orderid == null ? null : orderid.trim();
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public String getBuyername() {
+        return buyername;
     }
 
-    public String getCustomer() {
-        return customer;
+    public void setBuyername(String buyername) {
+        this.buyername = buyername == null ? null : buyername.trim();
     }
 
-    public void setCustomer(String customer) {
-        this.customer = customer == null ? null : customer.trim();
+    public String getBuyerphone() {
+        return buyerphone;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public void setBuyerphone(String buyerphone) {
+        this.buyerphone = buyerphone == null ? null : buyerphone.trim();
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public String getTourid() {
+        return tourid;
+    }
+
+    public void setTourid(String tourid) {
+        this.tourid = tourid == null ? null : tourid.trim();
+    }
+
+    public double getTourprice() {
+        return tourprice;
+    }
+
+    public void setTourprice(double tourprice) {
+        this.tourprice = tourprice;
     }
 
     public String getRole1() {
@@ -100,19 +110,27 @@ public class L2Order {
         this.role5 = role5 == null ? null : role5.trim();
     }
 
-    public String getProduct() {
-        return product;
+    public Date getCreatetime() {
+        return createtime;
     }
 
-    public void setProduct(String product) {
-        this.product = product == null ? null : product.trim();
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
     }
 
-    public Integer getStatus() {
-        return status;
+    public Date getFinishtime() {
+        return finishtime;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setFinishtime(Date finishtime) {
+        this.finishtime = finishtime;
+    }
+
+    public Integer getOrderstatus() {
+        return orderstatus;
+    }
+
+    public void setOrderstatus(Integer orderstatus) {
+        this.orderstatus = orderstatus;
     }
 }

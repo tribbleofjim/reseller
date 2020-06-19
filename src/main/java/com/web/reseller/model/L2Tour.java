@@ -15,6 +15,18 @@ public class L2Tour {
 
     private String id;
 
+//    @Override
+//    public boolean equals(Object obj){
+//        L2Tour t=(L2Tour)obj;
+//        return id.equals(t.id);
+//    }
+//    @Override
+//    public int hasCode(){
+//        String in = id;
+//        return in.hashCode();
+//    }
+
+
     public String getId() {
         return id;
     }

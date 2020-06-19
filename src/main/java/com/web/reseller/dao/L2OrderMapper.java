@@ -8,8 +8,15 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
-@Mapper
 @Component
+@Mapper
 public interface L2OrderMapper {
+
+
+    int insert(L2Order record);
+
+    int insertSelective(L2Order record);
+
+   List<String> selectOrderByPhone(String phonenumber);
 
 }

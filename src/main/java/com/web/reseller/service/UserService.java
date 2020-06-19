@@ -1,5 +1,6 @@
 package com.web.reseller.service;
 
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import com.web.reseller.dao.L2UserMapper;
 import com.web.reseller.model.L2User;
 import com.web.reseller.util.message;
@@ -38,7 +39,16 @@ public class UserService {
             return message.SUCCESS_1;
         return message.No_ROLE;
     }
-
+    public message userUpdate(String phonenumber,String password,String role){
+        L2User l2User = l2UserMapper.login(phonenumber);
+        System.out.println(l2User.getPassword());
+        if(l2User.getPassword().equals(password)){
+            l2UserMapper.userUpdate(phonenumber,role);
+            return message.SUCCESS;
+        }
+        else
+            return message.Wrong_Password;
+    }
     /**
      * 注册方法
      * @param l2User
@@ -57,5 +67,8 @@ public class UserService {
 
         l2UserMapper.register(l2User);
         return message.Reg_Success;
+    }
+    public String getSuperior(String ID){
+       return l2UserMapper.getSuperior(ID);
     }
 }

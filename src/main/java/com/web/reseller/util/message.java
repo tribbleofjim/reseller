@@ -27,6 +27,7 @@ public class message {
     public static message Wrong_city = new message("noCity！",Info_ERROR_CODE);
     public static message Reg_Success = new message("register successfully!",SUCCESS_CODE);
     public static message Confirm_Password = new message("different password!",CLIENT_ERROR_CODE);
+    public static message Wrong_Password =new message("wrong password",CLIENT_ERROR_CODE);
     // 登录模块
     public static message SUCCESS_5 = new message("class_5_success", SUCCESS_CODE_5);
     public static message SUCCESS_4 = new message("class_4_success", SUCCESS_CODE_4);

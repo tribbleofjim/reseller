@@ -21,5 +21,10 @@
         select * from l2_tour
 
     </select>
+    <select id="SelectByID" parameterType="String" resultType="com.web.reseller.model.L2Tour">
+        select * from l2_tour
+        where id = #{ID}
+
+    </select>
 </mapper>
 
