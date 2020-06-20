@@ -13,5 +13,5 @@ public interface L2UserMapper {
     List<L2User> resellersList(String phonenumber);
     List<L2User> resellersListAll();
     String getSuperior(String ID);
-    boolean userUpdate(String phonenumber,String role);
+    boolean userUpdate(L2User l2User);
     void register(L2User l2User);}

@@ -14,24 +14,25 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/comoper")
 public class CompanyOperatorController {
+
     @Autowired
     private CompanyOperatorService CompanyOperatorService;
+
     @RequestMapping("/products")
     @ResponseBody
     public result productsList(){
-
         return CompanyOperatorService.productsList();
     }
+
     @RequestMapping(value = "/resellers", method = RequestMethod.GET)
     @ResponseBody
     public result resellersList(@RequestParam(value = "phoneNumber") String phonenumber){
-
         return CompanyOperatorService.resellersList(phonenumber);
     }
+
     @RequestMapping(value = "/distribute", method = RequestMethod.GET)
     @ResponseBody
     public message distribute2reseller(@RequestParam(value = "phoneNumber") String phonenumber,@RequestParam(value = "productID") String productID){
-
         return CompanyOperatorService.distribute2reseller(phonenumber,productID);
     }
 }

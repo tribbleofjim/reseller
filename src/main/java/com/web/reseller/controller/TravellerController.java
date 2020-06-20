@@ -30,11 +30,13 @@ public class TravellerController {
     private UserService userService;
     @Autowired
     private OrderService orderService;
+
     @RequestMapping("/myproducts")
     @ResponseBody
     public result myproducts(@RequestParam(value = "phonenumber") String phonenumber){
         return travellerService.myproducts(phonenumber) ;
     }
+
     @RequestMapping("/operators")
     @ResponseBody
     public result operatorListAll(){
@@ -49,30 +51,30 @@ public class TravellerController {
                                @RequestParam(value = "tourprice") double tourprice,
                                @RequestParam(value = "operatorPhoneNumber") String operatorPhoneNumber,
                                @RequestParam(value = "number") int number,
-                               @RequestParam(value = "buyername") String buyername)
+                               @RequestParam(value = "buyername") String buyername) {
+        int i;
+        for( i=0;i<number;i++){
+           String orderID = KeyUtil.genUniqueKey();
+            L2Order l2Order=new L2Order();
+            l2Order.setBuyername(buyername);
+            l2Order.setOrderid(orderID);
+            l2Order.setBuyerphone(phonenumber);
+            l2Order.setTourid(productID);
+            l2Order.setTourprice(tourprice);
+            l2Order.setRole1(phonenumber);
+            l2Order.setRole2(operatorPhoneNumber);
+            String role3 = userService.getSuperior(operatorPhoneNumber);
+            l2Order.setRole3(role3);
+            String role4 = userService.getSuperior(role3);
+            l2Order.setRole4(role4);
+            String role5 = userService.getSuperior(role4);
+            l2Order.setRole5(role5);
+            l2Order.setOrderstatus(0);//0:not paid 1:finished
+            String nowTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+            l2Order.setCreatetime(Timestamp.valueOf(nowTime));
 
-    {int i;
-for( i=0;i<number;i++){
-       String orderID = KeyUtil.genUniqueKey();
-        L2Order l2Order=new L2Order();
-        l2Order.setBuyername(buyername);
-        l2Order.setOrderid(orderID);
-        l2Order.setBuyerphone(phonenumber);
-        l2Order.setTourid(productID);
-        l2Order.setTourprice(tourprice);
-        l2Order.setRole1(phonenumber);
-        l2Order.setRole2(operatorPhoneNumber);
-        String role3 = userService.getSuperior(operatorPhoneNumber);
-        l2Order.setRole3(role3);
-        String role4 = userService.getSuperior(role3);
-        l2Order.setRole4(role4);
-        String role5 = userService.getSuperior(role4);
-        l2Order.setRole5(role5);
-        l2Order.setOrderstatus(0);//0:not paid 1:finished
-        String nowTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-        l2Order.setCreatetime(Timestamp.valueOf(nowTime));
-
-        travellerService.createOrder(l2Order);
+            travellerService.createOrder(l2Order);
+        }
+        return message.SUCCESS;
     }
-return message.SUCCESS;
-}}
+}

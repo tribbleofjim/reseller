@@ -13,16 +13,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
     @Autowired
     private UserService userService;
-    @RequestMapping("operatorUpgrade")
+
+
+    @RequestMapping("/operatorUpgrade")
     @ResponseBody
     public message operatorUpgrade(@RequestParam(value = "phonenumber") String phonenumber,
                                    @RequestParam(value = "password") String password,
                                    @RequestParam(value = "role") String role){
         return userService.userUpdate(phonenumber,password,role);
-
     }
+
     @RequestMapping("/webLogin")
     @ResponseBody
     public message login(@RequestParam(value = "phonenumber") String phonenumber,

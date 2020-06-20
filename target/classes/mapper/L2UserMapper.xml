@@ -28,10 +28,9 @@
         select superior from l2_user
         where phonenumber = #{phonenumber}
     </select>
-    <update id="userUpdate" parameterType="String">
+    <update id="userUpdate" parameterType="com.web.reseller.model.L2User">
         update l2_user
-        set
-                role = #{role,jdbcType=VARCHAR}
+        set role = #{role,jdbcType=VARCHAR}
         where phonenumber = #{phonenumber,jdbcType=VARCHAR}
     </update>
 

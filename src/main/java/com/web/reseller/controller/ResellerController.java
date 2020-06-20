@@ -14,21 +14,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/reseller")
 public class ResellerController {
+
     @Autowired
     private ResellerService resellerService;
+
     @RequestMapping("/products")
     @ResponseBody
     public result productsList(){
-
         return resellerService.productsList();
     }
+
     @RequestMapping("/operators")
     @ResponseBody
     public result operatorList(@RequestParam(value = "phoneNumber") String phonenumber){
-
         return resellerService.operatorList(phonenumber);
     }
-
-
-
 }

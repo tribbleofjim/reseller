@@ -1,6 +1,5 @@
 package com.web.reseller.service;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
 import com.web.reseller.dao.L2UserMapper;
 import com.web.reseller.model.L2User;
 import com.web.reseller.util.message;
@@ -43,7 +42,7 @@ public class UserService {
         L2User l2User = l2UserMapper.login(phonenumber);
         System.out.println(l2User.getPassword());
         if(l2User.getPassword().equals(password)){
-            l2UserMapper.userUpdate(phonenumber,role);
+            l2UserMapper.userUpdate(l2User);
             return message.SUCCESS;
         }
         else
