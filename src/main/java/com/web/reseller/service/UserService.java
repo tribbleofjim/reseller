@@ -40,8 +40,10 @@ public class UserService {
     }
     public message userUpdate(String phonenumber,String password,String role){
         L2User l2User = l2UserMapper.login(phonenumber);
-        System.out.println(l2User.getPassword());
+        // System.out.println(l2User.getPassword());
         if(l2User.getPassword().equals(password)){
+            L2User updateUser = new L2User();
+            updateUser.setRole(role);
             l2UserMapper.userUpdate(l2User);
             return message.SUCCESS;
         }

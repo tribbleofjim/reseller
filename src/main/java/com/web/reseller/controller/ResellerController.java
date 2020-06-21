@@ -1,6 +1,5 @@
 package com.web.reseller.controller;
 
-import com.web.reseller.service.CompanyOperatorService;
 import com.web.reseller.service.ResellerService;
 import com.web.reseller.util.result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +19,8 @@ public class ResellerController {
 
     @RequestMapping("/products")
     @ResponseBody
-    public result productsList(){
-        return resellerService.productsList();
+    public result productsList(@RequestParam(value = "phoneNumber") String phoneNumber){
+        return resellerService.productsList(phoneNumber);
     }
 
     @RequestMapping("/operators")

@@ -21,6 +21,13 @@
         select * from l2_tour
 
     </select>
+
+    <select id="getProductList" parameterType="String" resultType="com.web.reseller.model.L2Tour">
+        select l2_tour.*
+        from l2_tour, l2_role2product
+        where l2_tour.id = l2_role2product.productID
+        and l2_role2product.phonenumber = #{phoneNumber}
+    </select>
     <select id="SelectByID" parameterType="String" resultType="com.web.reseller.model.L2Tour">
         select * from l2_tour
         where id = #{ID}

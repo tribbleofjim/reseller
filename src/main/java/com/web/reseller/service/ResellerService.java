@@ -15,8 +15,8 @@ public class ResellerService {
     private L2TourMapper l2TourMapper;
     @Autowired
     private L2UserMapper l2UserMapper;
-    public result productsList(){
-        List<L2Tour> list =l2TourMapper.ProductList();
+    public result productsList(String phoneNumber){
+        List<L2Tour> list =l2TourMapper.getProductList(phoneNumber);
         if (list.size()==0)
             return result.No_product;
         result getResult=new result(200,list.size(),"success",list);

@@ -33,7 +33,7 @@ public class TravellerController {
 
     @RequestMapping("/myproducts")
     @ResponseBody
-    public result myproducts(@RequestParam(value = "phonenumber") String phonenumber){
+    public result myproducts(@RequestParam(value = "phoneNumber") String phonenumber){
         return travellerService.myproducts(phonenumber) ;
     }
 
