@@ -23,7 +23,7 @@ public class OperatorService {
 	public result percentage(String phonenumber){
         List<L2User>list =l2UserMapper.resellersList(phonenumber);
         if (list.size()==0)
-            return result.No_reseller;
+            return result.No_percentage;
         result getResult=new result(200,list.size(),"success",list);
         return getResult;
     }
