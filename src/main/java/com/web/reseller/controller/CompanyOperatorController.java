@@ -30,6 +30,12 @@ public class CompanyOperatorController {
         return CompanyOperatorService.resellersList(phonenumber);
     }
 
+    @RequestMapping(value = "/orders", method = RequestMethod.GET)
+    @ResponseBody
+    public result ordertsList(@RequestParam(value = "phoneNumber") String phoneNumber){
+        return resellerService.orderList(phoneNumber);
+    }
+    
     @RequestMapping(value = "/distribute", method = RequestMethod.GET)
     @ResponseBody
     public message distribute2reseller(@RequestParam(value = "phoneNumber") String phonenumber,@RequestParam(value = "productID") String productID){
