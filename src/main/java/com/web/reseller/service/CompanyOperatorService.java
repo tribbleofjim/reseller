@@ -44,7 +44,7 @@ public class CompanyOperatorService {
     public result orderList(String phonenumber){
         List<L2Order>list =l2OrderMapper.resellersList(phonenumber);
         if (list.size()==0)
-            return result.No_reseller;
+            return result.No_order;
         result getResult=new result(200,list.size(),"success",list);
         return getResult;
     }
