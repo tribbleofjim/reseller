@@ -30,4 +30,8 @@ public class ResellerService {
         result getResult=new result(200,list.size(),"success",list);
         return getResult;
     }
+
+    public result getSuperior(String phoneNumber){
+        return new result(200, 0, "success", l2UserMapper.getSuperior(phoneNumber));
+    }
 }

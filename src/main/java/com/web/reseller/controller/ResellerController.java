@@ -28,4 +28,10 @@ public class ResellerController {
     public result operatorList(@RequestParam(value = "phoneNumber") String phonenumber){
         return resellerService.operatorList(phonenumber);
     }
+
+    @RequestMapping("/superior")
+    @ResponseBody
+    public result getSuperior(@RequestParam(value = "phoneNumber") String phoneNumber){
+        return resellerService.getSuperior(phoneNumber);
+    }
 }
