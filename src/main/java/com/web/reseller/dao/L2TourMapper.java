@@ -11,5 +11,5 @@ import java.util.List;
 public interface L2TourMapper {
     List<L2Tour> ProductList();
     List<L2Tour> getProductList(String phoneNumber);
-    L2Tour SelectByID(String ID);
+    L2Tour SelectByID(String proId);
 }

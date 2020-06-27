@@ -1,7 +1,9 @@
 package com.web.reseller.service;
 
+import com.web.reseller.dao.L2OrderMapper;
 import com.web.reseller.dao.L2TourMapper;
 import com.web.reseller.dao.L2UserMapper;
+import com.web.reseller.model.L2Order;
 import com.web.reseller.model.L2Tour;
 import com.web.reseller.model.L2User;
 import com.web.reseller.util.result;
@@ -13,8 +15,11 @@ import java.util.List;
 public class ResellerService {
     @Autowired
     private L2TourMapper l2TourMapper;
+
     @Autowired
     private L2UserMapper l2UserMapper;
+
+    @Autowired
     private L2OrderMapper l2OrderMapper;
     
     public result productsList(String phoneNumber){
@@ -33,23 +38,14 @@ public class ResellerService {
         return getResult;
     }
     
-    public result orderList(String phonenumber){
-        List<L2Order>list =l2OrderMapper.resellersList(phonenumber);
-        if (list.size()==0)
-            return result.No_order;
-        result getResult=new result(200,list.size(),"success",list);
-        return getResult;
-    }
-    
-    public result percentage(String phonenumber){
-        List<L2User>list =l2UserMapper.resellersList(phonenumber);
-        if (list.size()==0)
-            return result.No_percentage;
-        result getResult=new result(200,list.size(),"success",list);
-        return getResult;
-    }
-    
     public result getSuperior(String phoneNumber){
         return new result(200, 0, "success", l2UserMapper.getSuperior(phoneNumber));
+    }
+
+    public result distributorOrderList(String phoneNumber) {
+        List<L2Order>list =l2OrderMapper.distributorOrderList(phoneNumber);
+        if (list.size()==0)
+            return result.No_order;
+        return new result(200,list.size(),"success",list);
     }
 }

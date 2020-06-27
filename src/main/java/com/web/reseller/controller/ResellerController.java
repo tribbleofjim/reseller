@@ -1,6 +1,7 @@
 package com.web.reseller.controller;
 
 import com.web.reseller.service.ResellerService;
+import com.web.reseller.service.UserService;
 import com.web.reseller.util.result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,9 @@ public class ResellerController {
     @Autowired
     private ResellerService resellerService;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping("/products")
     @ResponseBody
     public result productsList(@RequestParam(value = "phoneNumber") String phoneNumber){
@@ -32,12 +36,18 @@ public class ResellerController {
     @RequestMapping("/orders")
     @ResponseBody
     public result ordertsList(@RequestParam(value = "phoneNumber") String phoneNumber){
-        return resellerService.orderList(phoneNumber);
+        return resellerService.distributorOrderList(phoneNumber);
     }
     
     @RequestMapping("/superior")
     @ResponseBody
     public result getSuperior(@RequestParam(value = "phoneNumber") String phoneNumber){
         return resellerService.getSuperior(phoneNumber);
+    }
+
+    @RequestMapping("/percentage")
+    @ResponseBody
+    public result getPercent(@RequestParam(value = "phoneNumber") String phoneNumber){
+        return userService.percentage(phoneNumber);
     }
 }

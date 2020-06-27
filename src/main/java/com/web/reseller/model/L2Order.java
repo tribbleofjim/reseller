@@ -1,6 +1,5 @@
 package com.web.reseller.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class L2Order {
@@ -12,7 +11,7 @@ public class L2Order {
 
     private String tourid;
 
-    private double tourprice;
+    private Double tourprice;
 
     private String role1;
 
@@ -62,11 +61,11 @@ public class L2Order {
         this.tourid = tourid == null ? null : tourid.trim();
     }
 
-    public double getTourprice() {
+    public Double getTourprice() {
         return tourprice;
     }
 
-    public void setTourprice(double tourprice) {
+    public void setTourprice(Double tourprice) {
         this.tourprice = tourprice;
     }
 

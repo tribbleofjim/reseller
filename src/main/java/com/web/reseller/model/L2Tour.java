@@ -7,7 +7,7 @@ public class L2Tour {
 
     private String picture;
 
-    private BigDecimal price;
+    private double price;
 
     private String info;
 
@@ -61,11 +61,11 @@ public class L2Tour {
         this.picture = picture == null ? null : picture.trim();
     }
 
-    public BigDecimal getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

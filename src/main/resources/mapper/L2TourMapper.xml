@@ -4,22 +4,15 @@
     <resultMap id="BaseResultMap" type="com.web.reseller.model.L2Tour">
         <result column="name" jdbcType="VARCHAR" property="name" />
         <result column="picture" jdbcType="VARCHAR" property="picture" />
-        <result column="price" jdbcType="DECIMAL" property="price" />
+        <result column="price" jdbcType="DOUBLE" property="price" />
         <result column="info" jdbcType="VARCHAR" property="info" />
         <result column="sales" jdbcType="INTEGER" property="sales" />
         <result column="id" jdbcType="VARCHAR" property="id" />
         <result column="companyID" jdbcType="VARCHAR" property="companyID" />
 
     </resultMap>
-    <insert id="insert" parameterType="com.web.reseller.model.L2Tour">
-    insert into l2_tour (name, picture, price,
-      info, sales)
-    values (#{name,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL},
-      #{info,jdbcType=VARCHAR}, #{sales,jdbcType=INTEGER})
-  </insert>
     <select id="ProductList" parameterType="String" resultType="com.web.reseller.model.L2Tour">
         select * from l2_tour
-
     </select>
 
     <select id="getProductList" parameterType="String" resultType="com.web.reseller.model.L2Tour">
@@ -30,8 +23,7 @@
     </select>
     <select id="SelectByID" parameterType="String" resultType="com.web.reseller.model.L2Tour">
         select * from l2_tour
-        where id = #{ID}
-
+        where l2_tour.id = #{proId}
     </select>
 </mapper>
 

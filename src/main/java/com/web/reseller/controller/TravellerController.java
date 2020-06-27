@@ -7,6 +7,7 @@ import com.web.reseller.service.TravellerService;
 import com.web.reseller.service.UserService;
 import com.web.reseller.util.message;
 import com.web.reseller.util.result;
+import com.web.reseller.util.userForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -37,44 +38,26 @@ public class TravellerController {
         return travellerService.myproducts(phonenumber) ;
     }
 
-    @RequestMapping("/operators")
-    @ResponseBody
-    public result operatorListAll(){
-
-        return travellerService.operatorListAll();
-    }
-
-    @RequestMapping("/createorder")
-    @ResponseBody
-    public message createOrder(@RequestParam(value = "phonenumber") String phonenumber,
-                               @RequestParam(value = "productID") String productID,
-                               @RequestParam(value = "tourprice") double tourprice,
-                               @RequestParam(value = "operatorPhoneNumber") String operatorPhoneNumber,
-                               @RequestParam(value = "number") int number,
-                               @RequestParam(value = "buyername") String buyername) {
-        int i;
-        for( i=0;i<number;i++){
-           String orderID = KeyUtil.genUniqueKey();
-            L2Order l2Order=new L2Order();
-            l2Order.setBuyername(buyername);
-            l2Order.setOrderid(orderID);
-            l2Order.setBuyerphone(phonenumber);
-            l2Order.setTourid(productID);
-            l2Order.setTourprice(tourprice);
-            l2Order.setRole1(phonenumber);
-            l2Order.setRole2(operatorPhoneNumber);
-            String role3 = userService.getSuperior(operatorPhoneNumber);
-            l2Order.setRole3(role3);
-            String role4 = userService.getSuperior(role3);
-            l2Order.setRole4(role4);
-            String role5 = userService.getSuperior(role4);
-            l2Order.setRole5(role5);
-            l2Order.setOrderstatus(0);//0:not paid 1:finished
-            String nowTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-            l2Order.setCreatetime(Timestamp.valueOf(nowTime));
-
-            travellerService.createOrder(l2Order);
-        }
-        return message.SUCCESS;
-    }
+//    @RequestMapping("/operators")
+//    @ResponseBody
+//    public userForm operatorListAll(){
+//        return travellerService.operatorListAll();
+//    }
+//
+//    /**
+//     * 游客下单购买产品
+//     * @param userID
+//     * @param proID
+//     * @param operatorID
+//     * @param num
+//     * @return
+//     */
+//    @RequestMapping("/createorder")
+//    @ResponseBody
+//    public message createOrder(@RequestParam(value = "userID") String userID,
+//                               @RequestParam(value = "proID") String proID,
+//                               @RequestParam(value = "operatorID") String operatorID,
+//                               @RequestParam(value = "num") int num) {
+//        return travellerService.addOrder(userID, proID, operatorID, num);
+//    }
 }

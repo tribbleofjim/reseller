@@ -3,6 +3,7 @@ package com.web.reseller.service;
 import com.web.reseller.dao.L2UserMapper;
 import com.web.reseller.model.L2User;
 import com.web.reseller.util.message;
+import com.web.reseller.util.result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -69,7 +70,34 @@ public class UserService {
         l2UserMapper.register(l2User);
         return message.Reg_Success;
     }
+
+    /**
+     * 获取上级关系
+     * @param ID
+     * @return
+     */
     public String getSuperior(String ID){
        return l2UserMapper.getSuperior(ID);
+    }
+
+    /**
+     * 查看提成
+     * @param phonenumber
+     * @return
+     */
+    public result percentage(String phonenumber){
+        int percent =l2UserMapper.percentage(phonenumber);
+        if (percent == 0)
+            return result.No_percentage;
+        return new result(200,1,"success",percent);
+    }
+
+    /**
+     * 根据用户名获取用户信息
+     * @param phonenumber
+     * @return
+     */
+    public L2User getUser(String phonenumber){
+        return l2UserMapper.login(phonenumber);
     }
 }

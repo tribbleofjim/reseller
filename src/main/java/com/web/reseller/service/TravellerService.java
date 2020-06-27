@@ -6,15 +6,17 @@ import com.web.reseller.dao.L2UserMapper;
 import com.web.reseller.model.L2Order;
 import com.web.reseller.model.L2Tour;
 import com.web.reseller.model.L2User;
+import com.web.reseller.util.KeyUtil;
 import com.web.reseller.util.message;
 import com.web.reseller.util.result;
+import com.web.reseller.util.userForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 @Service
 public class TravellerService {
     @Autowired
@@ -22,11 +24,45 @@ public class TravellerService {
 
     @Autowired
     private L2OrderMapper l2OrderMapper;
+
     @Autowired
     private L2UserMapper l2UserMapper;
-    public message createOrder(L2Order l2Order){
-        l2OrderMapper.insert(l2Order);
-
+    @Autowired
+    private UserService userService;
+    /**
+     * 游客购买产品下单
+     * 增加一条订单
+     * @param userID
+     * @param proID
+     * @param num
+     * @return
+     */
+    public message addOrder(String userID, String proID, String operatorID, int num) {
+        L2Order l2Order = new L2Order();
+        for(int i=0;i<num;i++){
+            String orderID = KeyUtil.genUniqueKey();
+            L2User l2User = l2UserMapper.login(userID);
+            L2Tour l2Tour = l2TourMapper.SelectByID(proID);
+            System.out.println(operatorID);
+            String role3 = l2UserMapper.getSuperior(operatorID);
+            String role4 = l2UserMapper.getSuperior(role3);
+            String role5 = l2UserMapper.getSuperior(role4);
+            l2Order.setBuyername(l2User.getLoginname());
+            l2Order.setOrderid(orderID);
+            l2Order.setBuyerphone(userID);
+            l2Order.setTourid(proID);
+            System.out.println(l2Tour.getId());
+            l2Order.setTourprice(l2Tour.getPrice());
+            l2Order.setRole1(userID);
+            l2Order.setRole2(operatorID);
+            l2Order.setRole3(role3);
+            l2Order.setRole4(role4);
+            l2Order.setRole5(role5);
+            l2Order.setOrderstatus(0);//0:not paid 1:finished
+            String nowTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+            l2Order.setCreatetime(Timestamp.valueOf(nowTime));
+            l2OrderMapper.insert(l2Order);
+        }
         return message.SUCCESS;
     }
     public result myproducts(String phonenumber){
@@ -43,12 +79,11 @@ public class TravellerService {
         result getResult = new result(200,list2.size(),"success",list2);
        return getResult;
     }
-public result operatorListAll(){
+public userForm operatorListAll(){
     List<L2User>list =l2UserMapper.resellersListAll();
     if (list.size()==0)
-        return result.No_operator;
-    result getResult=new result(200,list.size(),"success",list);
-    return getResult;
+        return new userForm("404", 404, 0, list);
+    return new userForm("0", 0, list.size(), list);
 }
 
 

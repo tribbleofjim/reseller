@@ -11,6 +11,8 @@ public class result {
     public static result No_product = new result(500,0,"no product",null);
     public static result No_reseller = new result(500,0,"no reseller",null);
     public static result No_operator = new result(500,0,"no operator",null);
+    public static result No_order = new result(500, 0, "no order", null);
+    public static result No_percentage = new result(500, 0, "no percentage", null);
 
     public result(int code,int num, String message, Object data) {
         this.code = code;

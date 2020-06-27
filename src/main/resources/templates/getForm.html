@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>产品购买页面</title>
+    <link href="/layui/css/layui.css" th:href="@{/layui/css/layui.css}" rel="stylesheet">
+    <script src="/layui/layui.js" th:src="@{/layui/layui.js}"></script>
+
+</head>
+    <body class="layui-bg-gray">
+
+        <div class="layui-container">
+            <div class="layui-row">
+                <div class="layui-col-md5 layui-col-md-offset3" style="margin-top: 15%">
+                    <div style="text-align: center">
+                        <div>
+                            <p id="userID" style="
+                                      margin-left: 100px;
+                                      font-family: Dubai;
+                                      font-size: xx-large;" th:text="'operator:' + ${user} "></p>
+                            <p style="
+                                      margin-left: 100px;
+                                      font-family: Dubai;
+                                      font-size: xx-large;" th:text="'购买产品:' + ${product.getName()} "></p>
+                            <p id="proID" style="
+                                      margin-left: 100px;
+                                      font-family: Dubai;
+                                      font-size: xx-large;" th:text="'产品编号:' + ${product.getId()} "></p>
+                            <p style="
+                                      margin-left: 100px;
+                                      font-family: Dubai;
+                                      font-size: xx-large;" th:text="'产品详情:' + ${product.getInfo()} "></p>
+                            <form class="layui-form" action="">
+                                <!--购买者电话-->
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <input type="text" id="travellerID" required lay-verify="required"
+                                               placeholder="请输入您的电话，并确保您已经在平台注册为游客" autocomplete="off" class="layui-input" />
+                                    </div>
+                                </div>
+                                <!--购买产品数量-->
+                                <div class="layui-form-item">
+                                    <!--<label class="layui-form-label">-->
+                                        <!--<i class="layui-icon layui-icon-username"></i>-->
+                                    <!--</label>-->
+                                    <div class="layui-input-block">
+                                        <input type="text" id="num" required lay-verify="required"
+                                               placeholder="请输入购买产品数量" autocomplete="off" class="layui-input" />
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <button type="button" class="layui-btn layui-btn-normal" style="padding-left: 100px" onclick="buyProduct()">确认购买</button>
+
+                            <p style="
+                                      margin-left: 100px;
+                                      font-family: Dubai;
+                                      font-size: xx-large;" th:text="'请选择分销商业务员'"></p>
+
+                            <table class="layui-table" lay-data="{height:400, width:1000,url:'operators', page:true,
+                                            id:'iteminfo'}" lay-filter="iteminfo">
+                                <thead>
+                                <tr>
+                                    <th lay-data="{field:'phonenumber', width:150}">电话号码</th>
+                                    <th lay-data="{field:'loginname', width:200,}">分销商业务员名称</th>
+                                    <th lay-data="{field:'superior', width:100}">所属分销商</th>
+                                    <th lay-data="{field:'', width:200, toolbar:'#barDemo'}">工具</th>
+                                </tr>
+                                </thead>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" th:inline="javascript">
+            let operator = document.getElementById("userID").innerText.split(":")[1];
+            layui.use('form', function(){
+                let form = layui.form;
+            });
+
+            layui.use('table', function(){
+                let table = layui.table;
+                table.on('tool(iteminfo)', function (obj) {
+                    let data = obj.data;
+                    let layEvent = obj.event;
+                    let isChooseOperator = [[${isChooseOperator}]];
+                    if (layEvent === 'choose') {
+                        console.log(data);
+                        if(isChooseOperator){
+                            layer.open({
+                                content: '您无须选择分销商业务员',
+                                btn: ['确认'],
+                                yes: function (index, layero) {
+                                    layer.close(index);
+                                }
+                            })
+                        }
+                        else {
+                            layer.open({
+                                content: '确认选择该分销商业务员？',
+                                btn: ['确认', '取消'],
+                                yes: function (index, layero) {
+                                    console.log('ph=' + data.phonenumber);
+                                    operator = data.phonenumber;
+                                    layer.close(index);
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+
+            //监听提交
+            function buyProduct() {
+                let xhr = new XMLHttpRequest();
+                xhr.open('POST', 'createorder', true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                let userID = document.getElementById("travellerID").value;
+                let proID = document.getElementById("proID").innerText.split(':')[1];
+                let num = document.getElementById("num").value;
+                let str = 'userID=' + userID + '&proID=' + proID + '&num=' + num + '&operatorID=' + operator;
+                // console.log(str);
+                xhr.send(str);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        alert("购买成功!");
+                    }
+                }
+            }
+        </script>
+        <script type="text/html" id="barDemo">
+            <a class="layui-btn layui-btn-xs" lay-event="choose">选择分销商业务员</a>
+        </script>
+
+    </body>
+</html>

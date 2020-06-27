@@ -14,9 +14,22 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/oper")
 public class OperatorController {
-	 @RequestMapping(value = "/percentage", method = RequestMethod.GET)
-	    @ResponseBody
-	    public message percentage(@RequestParam(value = "phoneNumber") String phonenumber,@RequestParam(value = "productID") String productID){
-	        return CompanyOperatorService.distribute2reseller(phonenumber,productID);
-	 }
+
+    @Autowired
+    private CompanyOperatorService companyOperatorService;
+
+    @Autowired
+    private UserService userService;
+
+    /**
+     * 展示提成
+     * @param phonenumber
+     * @return
+     */
+    @RequestMapping(value = "/percentage", method = RequestMethod.GET)
+    @ResponseBody
+    public result percentage(@RequestParam(value = "phoneNumber") String phonenumber){
+        return userService.percentage(phonenumber);
+    }
+
 }

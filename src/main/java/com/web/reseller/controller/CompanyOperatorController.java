@@ -2,6 +2,7 @@ package com.web.reseller.controller;
 
 import com.web.reseller.model.L2User;
 import com.web.reseller.service.CompanyOperatorService;
+import com.web.reseller.service.ResellerService;
 import com.web.reseller.service.UserService;
 import com.web.reseller.util.message;
 import com.web.reseller.util.result;
@@ -16,29 +17,32 @@ import org.springframework.web.bind.annotation.*;
 public class CompanyOperatorController {
 
     @Autowired
-    private CompanyOperatorService CompanyOperatorService;
+    private CompanyOperatorService companyOperatorService;
+
+    @Autowired
+    private ResellerService resellerService;
 
     @RequestMapping("/products")
     @ResponseBody
     public result productsList(){
-        return CompanyOperatorService.productsList();
+        return companyOperatorService.productsList();
     }
 
-    @RequestMapping(value = "/resellers", method = RequestMethod.GET)
+    @RequestMapping(value = "/resellers")
     @ResponseBody
     public result resellersList(@RequestParam(value = "phoneNumber") String phonenumber){
-        return CompanyOperatorService.resellersList(phonenumber);
+        return companyOperatorService.resellersList(phonenumber);
     }
 
-    @RequestMapping(value = "/orders", method = RequestMethod.GET)
+    @RequestMapping(value = "/orders")
     @ResponseBody
     public result ordertsList(@RequestParam(value = "phoneNumber") String phoneNumber){
-        return resellerService.orderList(phoneNumber);
+        return companyOperatorService.orderList(phoneNumber);
     }
     
-    @RequestMapping(value = "/distribute", method = RequestMethod.GET)
+    @RequestMapping(value = "/distribute")
     @ResponseBody
     public message distribute2reseller(@RequestParam(value = "phoneNumber") String phonenumber,@RequestParam(value = "productID") String productID){
-        return CompanyOperatorService.distribute2reseller(phonenumber,productID);
+        return companyOperatorService.distribute2reseller(phonenumber,productID);
     }
 }

@@ -17,6 +17,10 @@
         select * from l2_user
         where phonenumber = #{phonenumber}
     </select>
+    <select id="getUser" parameterType="String" resultType="com.web.reseller.model.L2User">
+        select * from l2_user
+        where phonenumber = #{phonenumber}
+    </select>
   <select id="resellersList" parameterType="String" resultType="com.web.reseller.model.L2User">
         select * from l2_user
         where superior = #{phonenumber}
@@ -39,5 +43,11 @@
     values (#{loginname},#{password},#{phonenumber},#{qqnumber},#{age},#{city},#{role})
 
     </insert>
+
+    <select id="percentage" parameterType="String" resultType="Integer">
+        select bonus
+        from l2_user
+        where phonenumber = #{phoneNumber}
+    </select>
 </mapper>
 
