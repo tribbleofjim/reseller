@@ -80,6 +80,7 @@ public class TravellerService {
        return getResult;
     }
 public userForm operatorListAll(){
+        //展示所有分销商业务员
     List<L2User>list =l2UserMapper.resellersListAll();
     if (list.size()==0)
         return new userForm("404", 404, 0, list);

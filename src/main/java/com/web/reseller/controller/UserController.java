@@ -1,9 +1,11 @@
 package com.web.reseller.controller;
 
 import com.web.reseller.model.L2User;
+import com.web.reseller.service.OrderService;
 import com.web.reseller.service.UserService;
 import com.web.reseller.util.message;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +18,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
+    @Autowired
+    private OrderService orderService;
 
     @RequestMapping("/operatorUpgrade")
     @ResponseBody
@@ -34,6 +37,13 @@ public class UserController {
         l2User.setPhonenumber(phonenumber);
         l2User.setPassword(password);
         return userService.login(l2User);
+    }
+
+    @RequestMapping("/bonusOfAorder")
+    @ResponseBody
+    public double bonusOfAorder(@RequestParam(value = "role") String role,
+                                @RequestParam(value = "orderID") String orderID){
+        return orderService.bonusOfAorder(role,orderID);
     }
 
     @RequestMapping(value = "/webRegister", method = RequestMethod.POST)

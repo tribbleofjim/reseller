@@ -80,6 +80,11 @@ public class UserService {
        return l2UserMapper.getSuperior(ID);
     }
 
+
+    public message publicizePlus(String phonenumber){
+         l2UserMapper.publicizePlus(phonenumber);
+         return message.SUCCESS;
+    }
     /**
      * 查看提成
      * @param phonenumber
@@ -90,6 +95,10 @@ public class UserService {
         if (percent == 0)
             return result.No_percentage;
         return new result(200,1,"success",percent);
+    }
+    public message bonusPlus(String phonenumber,double bonus){
+        l2UserMapper.bonusPlus(phonenumber,bonus);
+        return message.SUCCESS;
     }
 
     /**

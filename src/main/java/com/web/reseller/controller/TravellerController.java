@@ -38,26 +38,4 @@ public class TravellerController {
         return travellerService.myproducts(phonenumber) ;
     }
 
-//    @RequestMapping("/operators")
-//    @ResponseBody
-//    public userForm operatorListAll(){
-//        return travellerService.operatorListAll();
-//    }
-//
-//    /**
-//     * 游客下单购买产品
-//     * @param userID
-//     * @param proID
-//     * @param operatorID
-//     * @param num
-//     * @return
-//     */
-//    @RequestMapping("/createorder")
-//    @ResponseBody
-//    public message createOrder(@RequestParam(value = "userID") String userID,
-//                               @RequestParam(value = "proID") String proID,
-//                               @RequestParam(value = "operatorID") String operatorID,
-//                               @RequestParam(value = "num") int num) {
-//        return travellerService.addOrder(userID, proID, operatorID, num);
-//    }
 }

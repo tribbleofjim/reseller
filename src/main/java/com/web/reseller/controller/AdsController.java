@@ -42,11 +42,11 @@ public class AdsController {
         String userID = userProID.split(":")[0];
         String proID = userProID.split(":")[1];
         //TODO: 计算该广告点击量，即userID代表的人的业绩
-
-        // 判断是否需要选择分销商业务员
+        userService.publicizePlus(userID);
+         // 判断是否需要选择分销商业务员
         L2User l2User = userService.getUser(userID);
         boolean isChooseOperator = true;
-        if("分销商业务员".equals(l2User.getRole())){
+        if(!"二级业务员".equals(l2User.getRole())){
             isChooseOperator = false;
         }
 
