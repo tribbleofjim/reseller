@@ -31,15 +31,16 @@ public class AdsController {
 
     /**
      * 从广告二维码跳转到报名页面
-     * @param userID
-     * @param proID
+     * @param userProID
      * @param model
      * @return
      */
     @RequestMapping("/getForm")
-    public String getForm(@RequestParam(value = "userID") String userID,
-                          @RequestParam(value = "proID") String proID,
+    public String getForm(@RequestParam(value = "userProID") String userProID,
+//                          @RequestParam(value = "proID") String proID,
                           Model model){
+        String userID = userProID.split(":")[0];
+        String proID = userProID.split(":")[1];
         //TODO: 计算该广告点击量，即userID代表的人的业绩
 
         // 判断是否需要选择分销商业务员
