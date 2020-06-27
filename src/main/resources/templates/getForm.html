@@ -61,14 +61,14 @@
                             <p style="
                                       margin-left: 100px;
                                       font-family: Dubai;
-                                      font-size: xx-large;" th:text="'请选择分销商业务员'"></p>
+                                      font-size: xx-large;" th:text="'请选择二级业务员'"></p>
 
                             <table class="layui-table" lay-data="{height:400, width:1000,url:'operators', page:true,
                                             id:'iteminfo'}" lay-filter="iteminfo">
                                 <thead>
                                 <tr>
                                     <th lay-data="{field:'phonenumber', width:150}">电话号码</th>
-                                    <th lay-data="{field:'loginname', width:200,}">分销商业务员名称</th>
+                                    <th lay-data="{field:'loginname', width:200,}">二级业务员名称</th>
                                     <th lay-data="{field:'superior', width:100}">所属分销商</th>
                                     <th lay-data="{field:'', width:200, toolbar:'#barDemo'}">工具</th>
                                 </tr>
@@ -97,7 +97,7 @@
                         console.log(data);
                         if(isChooseOperator){
                             layer.open({
-                                content: '您无须选择分销商业务员',
+                                content: '您无须选择二级业务员',
                                 btn: ['确认'],
                                 yes: function (index, layero) {
                                     layer.close(index);
@@ -106,7 +106,7 @@
                         }
                         else {
                             layer.open({
-                                content: '确认选择该分销商业务员？',
+                                content: '确认选择该二级业务员？',
                                 btn: ['确认', '取消'],
                                 yes: function (index, layero) {
                                     console.log('ph=' + data.phonenumber);
@@ -128,17 +128,18 @@
                 let proID = document.getElementById("proID").innerText.split(':')[1];
                 let num = document.getElementById("num").value;
                 let str = 'userID=' + userID + '&proID=' + proID + '&num=' + num + '&operatorID=' + operator;
-                // console.log(str);
+                 console.log(str);
                 xhr.send(str);
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         alert("购买成功!");
                     }
+
                 }
             }
         </script>
         <script type="text/html" id="barDemo">
-            <a class="layui-btn layui-btn-xs" lay-event="choose">选择分销商业务员</a>
+            <a class="layui-btn layui-btn-xs" lay-event="choose">选择二级业务员</a>
         </script>
 
     </body>
