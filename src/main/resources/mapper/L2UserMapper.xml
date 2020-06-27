@@ -27,6 +27,7 @@
     </select>
   <select id="resellersListAll"  resultType="com.web.reseller.model.L2User">
         select * from l2_user
+        where role = "二级业务员"
     </select>
   <select id="getSuperior" parameterType="String" resultType="String">
         select superior from l2_user
@@ -48,6 +49,22 @@
         select bonus
         from l2_user
         where phonenumber = #{phoneNumber}
+    </select>
+    <update id="publicizePlus" parameterType="String">
+
+    update l2_user
+    set publicize = publicize + 1
+    where phonenumber = #{phonenumber,jdbcType=VARCHAR}
+    </update>
+    <update id="bonusPlus" >
+        update l2_user
+        set bonus = bonus + #{param2}
+        where phonenumber = #{param1}
+    </update>
+    <select id="userRole" parameterType="String" resultType="String">
+        select role
+        from l2_user
+        where phonenumber = #{phonenumber}
     </select>
 </mapper>
 

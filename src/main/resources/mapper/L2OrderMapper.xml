@@ -30,6 +30,17 @@
           #{orderstatus,jdbcType=INTEGER})
   </insert>
 
+  <update id="finishOrder" parameterType="String">
+    update l2_order
+    set orderStatus = 1,finishTime = #{nowTime}
+    where orderID = #{orderID}
+  </update>
+  <select id="getOrderByID" parameterType="String" resultType="com.web.reseller.model.L2Order">
+    select *
+    from l2_order
+    where orderID = #{orderID}
+  </select>
+
 
     <select id="comOperOrderList" parameterType="String" resultType="com.web.reseller.model.L2Order">
     select *
