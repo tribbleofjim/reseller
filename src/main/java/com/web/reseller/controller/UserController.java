@@ -45,6 +45,12 @@ public class UserController {
                                 @RequestParam(value = "orderID") String orderID){
         return orderService.bonusOfAorder(role,orderID);
     }
+    @RequestMapping("/bonusOfAorder")
+    @ResponseBody
+    public double bonusOfAll(@RequestParam(value = "phonenumber")String phonenumber ){
+        L2User l2User =userService.getUser(phonenumber);
+        return l2User.getBonus();
+    }
 
     @RequestMapping(value = "/webRegister", method = RequestMethod.POST)
     @ResponseBody
