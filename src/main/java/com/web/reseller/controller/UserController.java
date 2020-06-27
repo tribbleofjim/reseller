@@ -45,7 +45,7 @@ public class UserController {
                                 @RequestParam(value = "orderID") String orderID){
         return orderService.bonusOfAorder(role,orderID);
     }
-    @RequestMapping("/bonusOfAorder")
+    @RequestMapping("/bonusOfAll")
     @ResponseBody
     public double bonusOfAll(@RequestParam(value = "phonenumber")String phonenumber ){
         L2User l2User =userService.getUser(phonenumber);
