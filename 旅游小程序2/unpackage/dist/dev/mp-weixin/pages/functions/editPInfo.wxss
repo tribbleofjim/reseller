@@ -1,0 +1,11 @@
+
+.conformR{
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.btn-row {
+	margin-top: 25px;
+	padding: 10px;
+}
+

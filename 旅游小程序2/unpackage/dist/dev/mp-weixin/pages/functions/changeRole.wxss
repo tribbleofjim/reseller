@@ -1,0 +1,6 @@
+
+.btn-row {
+	margin-top: 25px;
+	padding: 10px;
+}
+

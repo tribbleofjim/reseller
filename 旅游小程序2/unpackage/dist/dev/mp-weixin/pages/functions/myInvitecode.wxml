@@ -1,0 +1,1 @@
+<view><view class="uni-title uni-common-pl">我的邀请码</view><view class="uni-list"><view class="uni-list-cell"><view class="uni-list-cell-left">邀请码：</view><view class="uni-list-cell-db"><text selectable="true"></text></view></view></view></view>

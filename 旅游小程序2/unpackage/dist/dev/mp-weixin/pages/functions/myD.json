@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "层级关系",
+  "usingComponents": {
+    "uni-segmented-control": "/components/uni-segmented-control/uni-segmented-control",
+    "uni-grid": "/components/uni-grid/uni-grid",
+    "uni-grid-item": "/components/uni-grid-item/uni-grid-item",
+    "uni-section": "/components/uni-section/uni-section"
+  }
+}

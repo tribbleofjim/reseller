@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/homePage/homePage",
+    "pages/login/login",
+    "pages/personalPage/distributor",
+    "pages/personalPage/businessManager",
+    "pages/personalPage/BMofD",
+    "pages/functions/editPInfo",
+    "pages/functions/changeRole",
+    "pages/functions/checkInfo",
+    "pages/functions/myAchievement",
+    "pages/functions/myD",
+    "pages/functions/myInvitecode",
+    "pages/functions/myPayback",
+    "pages/functions/myProduct",
+    "pages/functions/pay",
+    "pages/personalPage/touristPage",
+    "pages/login/password",
+    "pages/login/register",
+    "pages/infomation/achievement",
+    "pages/infomation/commission",
+    "pages/infomation/showPro",
+    "pages/infomation/products",
+    "pages/functions/ad"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#beebe6",
+    "backgroundColor": "#ddd5eb"
+  },
+  "tabBar": {
+    "color": "#b3fff9",
+    "selectedColor": "#598eff",
+    "backgroundColor": "#abffea",
+    "list": [
+      {
+        "pagePath": "pages/homePage/homePage",
+        "text": "主页",
+        "iconPath": "./static/img/homeHL.png",
+        "selectedIconPath": "./static/img/homeHL.png"
+      },
+      {
+        "pagePath": "pages/login/login",
+        "text": "个人空间",
+        "iconPath": "./static/img/user.png",
+        "selectedIconPath": "./static/img/userHL.png"
+      }
+    ]
+  },
+  "permission": {},
+  "usingComponents": {},
+  "sitemapLocation": "sitemap42.json"
+}
