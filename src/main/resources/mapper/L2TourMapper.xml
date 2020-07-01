@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.web.reseller.dao.L2TourMapper">
+    <resultMap id="BaseResultMap" type="com.web.reseller.model.L2Tour">
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="picture" jdbcType="VARCHAR" property="picture" />
+        <result column="price" jdbcType="DOUBLE" property="price" />
+        <result column="info" jdbcType="VARCHAR" property="info" />
+        <result column="sales" jdbcType="INTEGER" property="sales" />
+        <result column="id" jdbcType="VARCHAR" property="id" />
+        <result column="companyID" jdbcType="VARCHAR" property="companyID" />
+
+    </resultMap>
+    <select id="ProductList" parameterType="String" resultType="com.web.reseller.model.L2Tour">
+        select * from l2_tour
+    </select>
+
+    <select id="getProductList" parameterType="String" resultType="com.web.reseller.model.L2Tour">
+        select l2_tour.*
+        from l2_tour, l2_role2product
+        where l2_tour.id = l2_role2product.productID
+        and l2_role2product.phonenumber = #{phoneNumber}
+    </select>
+    <select id="SelectByID" parameterType="String" resultType="com.web.reseller.model.L2Tour">
+        select * from l2_tour
+        where l2_tour.id = #{proId}
+    </select>
+</mapper>
+

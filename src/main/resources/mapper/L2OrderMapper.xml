@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.reseller.dao.L2OrderMapper">
+  <resultMap id="BaseResultMap" type="com.web.reseller.model.L2Order">
+    <id column="orderID" jdbcType="VARCHAR" property="orderid" />
+    <result column="buyerName" jdbcType="VARCHAR" property="buyername" />
+    <result column="buyerPhone" jdbcType="VARCHAR" property="buyerphone" />
+    <result column="tourID" jdbcType="VARCHAR" property="tourid" />
+    <result column="tourPrice" jdbcType="DOUBLE" property="tourprice" />
+    <result column="role1" jdbcType="VARCHAR" property="role1" />
+    <result column="role2" jdbcType="VARCHAR" property="role2" />
+    <result column="role3" jdbcType="VARCHAR" property="role3" />
+    <result column="role4" jdbcType="VARCHAR" property="role4" />
+    <result column="role5" jdbcType="VARCHAR" property="role5" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="finishTime" jdbcType="TIMESTAMP" property="finishtime" />
+    <result column="orderStatus" jdbcType="INTEGER" property="orderstatus" />
+  </resultMap>
+
+    <insert id="insert" parameterType="com.web.reseller.model.L2Order">
+        insert into l2_order (orderID, buyerName, buyerPhone,
+          tourID, tourPrice, role1,
+          role2, role3, role4,
+          role5, createTime, finishTime,
+          orderStatus)
+        values (#{orderid,jdbcType=VARCHAR}, #{buyername,jdbcType=VARCHAR}, #{buyerphone,jdbcType=VARCHAR},
+          #{tourid,jdbcType=VARCHAR}, #{tourprice,jdbcType=DOUBLE}, #{role1,jdbcType=VARCHAR},
+          #{role2,jdbcType=VARCHAR}, #{role3,jdbcType=VARCHAR}, #{role4,jdbcType=VARCHAR},
+          #{role5,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{finishtime,jdbcType=TIMESTAMP},
+          #{orderstatus,jdbcType=INTEGER})
+  </insert>
+
+  <update id="finishOrder" parameterType="String">
+    update l2_order
+    set orderStatus = 1,finishTime = #{nowTime}
+    where orderID = #{orderID}
+  </update>
+  <select id="getOrderByID" parameterType="String" resultType="com.web.reseller.model.L2Order">
+    select *
+    from l2_order
+    where orderID = #{orderID}
+  </select>
+
+  <select id="selectOrderByPhone" parameterType="String" resultType="String">
+    select tourID from l2_order
+    where buyerPhone = #{phonenumber}
+  </select>
+
+    <select id="comOperOrderList" parameterType="String" resultType="com.web.reseller.model.L2Order">
+    select *
+    from l2_order
+    where role2 = #{phonenumber}
+  </select>
+
+    <insert id="insertOrder" parameterType="com.web.reseller.model.L2Order">
+        insert into l2_order
+        values ()
+    </insert>
+  
+  <select id="distributorOrderList" parameterType="String" resultType="com.web.reseller.model.L2Order">
+    select *
+    from l2_order
+    where role3 = #{phonenumber}
+  </select>
+
+  <select id="operatorOrderList" parameterType="String" resultType="com.web.reseller.model.L2Order">
+    select *
+    from l2_order
+    where role4 = #{phonenumber}
+  </select>
+
+</mapper>

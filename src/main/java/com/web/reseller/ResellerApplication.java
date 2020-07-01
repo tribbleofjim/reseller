@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com/web/reseller/controller/dao")
+@MapperScan("com/web/reseller/dao")
 public class ResellerApplication {
     public static void main(String[] args) {
         SpringApplication.run(ResellerApplication.class, args);
