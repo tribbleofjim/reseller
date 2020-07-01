@@ -1,14 +1,8 @@
 package com.web.reseller.controller;
 
-<<<<<<< HEAD
-import com.web.reseller.service.CompanyOperatorService;
-import com.web.reseller.service.ResellerService;
-=======
-import com.web.reseller.model.L2User;
 import com.web.reseller.service.CompanyOperatorService;
 import com.web.reseller.service.ResellerService;
 import com.web.reseller.service.UserService;
->>>>>>> e32a355391da51cce3e26f53c6a3febbbd306185
 import com.web.reseller.util.message;
 import com.web.reseller.util.result;
 
@@ -23,6 +17,9 @@ public class CompanyOperatorController {
 
     @Autowired
     private CompanyOperatorService companyOperatorService;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private ResellerService resellerService;
@@ -49,5 +46,11 @@ public class CompanyOperatorController {
     @ResponseBody
     public message distribute2reseller(@RequestParam(value = "phoneNumber") String phonenumber,@RequestParam(value = "productID") String productID){
         return companyOperatorService.distribute2reseller(phonenumber,productID);
+    }
+
+    @RequestMapping("/percentage")
+    @ResponseBody
+    public result getPercent(@RequestParam(value = "phoneNumber") String phoneNumber){
+        return userService.percentage(phoneNumber);
     }
 }

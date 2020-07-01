@@ -1,7 +1,6 @@
 package com.web.reseller.service;
 
 import com.web.reseller.dao.L2OrderMapper;
-<<<<<<< HEAD
 import com.web.reseller.dao.L2UserMapper;
 import com.web.reseller.model.L2User;
 import com.web.reseller.util.result;
@@ -9,23 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-=======
-import com.web.reseller.dao.L2TourMapper;
-import com.web.reseller.dao.L2UserMapper;
-import com.web.reseller.dao.L2role2productMapper;
-import com.web.reseller.model.L2Role2product;
-import com.web.reseller.model.L2Tour;
-import com.web.reseller.model.L2User;
-import com.web.reseller.util.result;
-import com.web.reseller.util.message;
-import com.web.reseller.util.result;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.*;
->>>>>>> e32a355391da51cce3e26f53c6a3febbbd306185
 
 @Service
 public class OperatorService {

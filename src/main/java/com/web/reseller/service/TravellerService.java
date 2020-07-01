@@ -79,7 +79,6 @@ public class TravellerService {
         result getResult = new result(200,list2.size(),"success",list2);
        return getResult;
     }
-<<<<<<< HEAD
     public userForm operatorListAll(){
             //展示所有分销商业务员
         List<L2User>list =l2UserMapper.resellersListAll();
@@ -88,15 +87,4 @@ public class TravellerService {
             return new userForm("404", 404, 0, list);
         return new userForm("0", 0, list.size(), list);
     }
-=======
-public userForm operatorListAll(){
-        //展示所有分销商业务员
-    List<L2User>list =l2UserMapper.resellersListAll();
-    if (list.size()==0)
-        return new userForm("404", 404, 0, list);
-    return new userForm("0", 0, list.size(), list);
-}
->>>>>>> e32a355391da51cce3e26f53c6a3febbbd306185
-
-
 }

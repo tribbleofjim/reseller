@@ -29,13 +29,7 @@
         select * from l2_user
         where role = "二级业务员"
     </select>
-<<<<<<< HEAD
-    <!--<select id="operatorListAll" resultType="com.web.reseller.model.L2User">-->
-        <!--select * from l2_user-->
-        <!--where role = "二级业务员"-->
-    <!--</select>-->
-=======
->>>>>>> e32a355391da51cce3e26f53c6a3febbbd306185
+
   <select id="getSuperior" parameterType="String" resultType="String">
         select superior from l2_user
         where phonenumber = #{phonenumber}

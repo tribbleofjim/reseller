@@ -4,10 +4,6 @@ package com.web.reseller.controller;
 import com.web.reseller.model.L2User;
 import com.web.reseller.service.*;
 import com.web.reseller.util.message;
-<<<<<<< HEAD
-=======
-import com.web.reseller.util.result;
->>>>>>> e32a355391da51cce3e26f53c6a3febbbd306185
 import com.web.reseller.util.userForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

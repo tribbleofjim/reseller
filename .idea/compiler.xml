@@ -6,20 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="reseller" />
-<<<<<<< HEAD
-        <module name="reseller-back-dev 4" />
+        <module name="reseller_1" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="reseller_1" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="reseller-back-dev 4" options="-parameters" />
-    </option>
-  </component>
-=======
-      </profile>
-    </annotationProcessing>
-  </component>
->>>>>>> e32a355391da51cce3e26f53c6a3febbbd306185
 </project>

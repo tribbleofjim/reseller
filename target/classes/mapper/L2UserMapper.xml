@@ -27,24 +27,13 @@
     </select>
   <select id="resellersListAll"  resultType="com.web.reseller.model.L2User">
         select * from l2_user
-<<<<<<< HEAD
         where role = "二级业务员"
     </select>
-    <!--<select id="operatorListAll" resultType="com.web.reseller.model.L2User">-->
-        <!--select * from l2_user-->
-        <!--where role = "二级业务员"-->
-    <!--</select>-->
+
   <select id="getSuperior" parameterType="String" resultType="String">
         select superior from l2_user
         where phonenumber = #{phonenumber}
     </select>
-=======
-    </select>
-  <select id="getSuperior" parameterType="String" resultType="String">
-        select superior from l2_user
-        where phonenumber = #{phonenumber}
-    </select>
->>>>>>> e32a355391da51cce3e26f53c6a3febbbd306185
     <update id="userUpdate" parameterType="com.web.reseller.model.L2User">
         update l2_user
         set role = #{role,jdbcType=VARCHAR}
@@ -62,7 +51,6 @@
         from l2_user
         where phonenumber = #{phoneNumber}
     </select>
-<<<<<<< HEAD
     <update id="publicizePlus" parameterType="String">
 
     update l2_user
@@ -79,7 +67,5 @@
         from l2_user
         where phonenumber = #{phonenumber}
     </select>
-=======
->>>>>>> e32a355391da51cce3e26f53c6a3febbbd306185
 </mapper>
 

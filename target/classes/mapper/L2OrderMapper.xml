@@ -30,7 +30,6 @@
           #{orderstatus,jdbcType=INTEGER})
   </insert>
 
-<<<<<<< HEAD
   <update id="finishOrder" parameterType="String">
     update l2_order
     set orderStatus = 1,finishTime = #{nowTime}
@@ -46,8 +45,7 @@
     select tourID from l2_order
     where buyerPhone = #{phonenumber}
   </select>
-=======
->>>>>>> e32a355391da51cce3e26f53c6a3febbbd306185
+
 
     <select id="comOperOrderList" parameterType="String" resultType="com.web.reseller.model.L2Order">
     select *
