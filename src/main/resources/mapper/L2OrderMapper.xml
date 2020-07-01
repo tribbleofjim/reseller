@@ -41,10 +41,13 @@
     where orderID = #{orderID}
   </select>
 
+<<<<<<< HEAD
   <select id="selectOrderByPhone" parameterType="String" resultType="String">
     select tourID from l2_order
     where buyerPhone = #{phonenumber}
   </select>
+=======
+>>>>>>> e32a355391da51cce3e26f53c6a3febbbd306185
 
     <select id="comOperOrderList" parameterType="String" resultType="com.web.reseller.model.L2Order">
     select *

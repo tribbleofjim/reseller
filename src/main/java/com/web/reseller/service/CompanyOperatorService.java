@@ -10,10 +10,20 @@ import com.web.reseller.model.L2Tour;
 import com.web.reseller.model.L2User;
 import com.web.reseller.util.result;
 import com.web.reseller.util.message;
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+=======
+import com.web.reseller.util.result;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.*;
+>>>>>>> e32a355391da51cce3e26f53c6a3febbbd306185
 
 @Service
 public class CompanyOperatorService {
@@ -35,6 +45,7 @@ public class CompanyOperatorService {
         return getResult;
     }
 
+<<<<<<< HEAD
     public result getProductsList(String phoneNumber){
         List<L2Tour>list =l2TourMapper.getProductList(phoneNumber);
         if (list.size()==0)
@@ -42,6 +53,8 @@ public class CompanyOperatorService {
         return new result(200,list.size(),"success",list);
     }
 
+=======
+>>>>>>> e32a355391da51cce3e26f53c6a3febbbd306185
     public result resellersList(String phonenumber){
         List<L2User>list =l2UserMapper.resellersList(phonenumber);
         if (list.size()==0)
@@ -66,6 +79,7 @@ public class CompanyOperatorService {
 
         return message.SUCCESS;
     }
+<<<<<<< HEAD
 
     public result operOrderList(String phoneNumber) {
         List<L2Order> list = l2OrderMapper.operatorOrderList(phoneNumber);
@@ -74,4 +88,6 @@ public class CompanyOperatorService {
         result getResult=new result(200,list.size(),"success",list);
         return getResult;
     }
+=======
+>>>>>>> e32a355391da51cce3e26f53c6a3febbbd306185
 }

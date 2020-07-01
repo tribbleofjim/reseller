@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="reseller" />
+<<<<<<< HEAD
         <module name="reseller-back-dev 4" />
       </profile>
     </annotationProcessing>
@@ -16,4 +17,9 @@
       <module name="reseller-back-dev 4" options="-parameters" />
     </option>
   </component>
+=======
+      </profile>
+    </annotationProcessing>
+  </component>
+>>>>>>> e32a355391da51cce3e26f53c6a3febbbd306185
 </project>

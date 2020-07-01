@@ -1,5 +1,9 @@
 package com.web.reseller.controller;
 
+<<<<<<< HEAD
+=======
+import com.web.reseller.model.L2User;
+>>>>>>> e32a355391da51cce3e26f53c6a3febbbd306185
 import com.web.reseller.service.CompanyOperatorService;
 import com.web.reseller.service.OrderService;
 import com.web.reseller.service.UserService;
@@ -34,7 +38,10 @@ public class OperatorController {
     public result percentage(@RequestParam(value = "phoneNumber") String phonenumber){
         return userService.percentage(phonenumber);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e32a355391da51cce3e26f53c6a3febbbd306185
     @RequestMapping(value = "/finishiOrder")
     @ResponseBody
     public  message finishiOrder(@RequestParam(value = "orderID")String orderID){
@@ -43,6 +50,7 @@ public class OperatorController {
         return message.SUCCESS;
     }
 
+<<<<<<< HEAD
     @RequestMapping(value = "/orders")
     @ResponseBody
     public result ordertsList(@RequestParam(value = "phoneNumber") String phoneNumber){
@@ -54,4 +62,7 @@ public class OperatorController {
     public result productsList(@RequestParam(value = "phoneNumber") String phoneNumber){
         return companyOperatorService.getProductsList(phoneNumber);
     }
+=======
+
+>>>>>>> e32a355391da51cce3e26f53c6a3febbbd306185
 }
